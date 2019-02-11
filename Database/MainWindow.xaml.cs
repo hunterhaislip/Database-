@@ -21,13 +21,14 @@ namespace Database
     /// </summary>
     public partial class MainWindow : Window
     {
+        OleDbConnection cn;
         public MainWindow()
         {
             
             InitializeComponent();
 
-            
-            string strConn = @"Database.accdb";
+            //OleDbConnection cn; 
+            string strConn = "Database.accdb";
             cn = new OleDbConnection(strConn);
             //cn.ConnectionString = strConn;
 
