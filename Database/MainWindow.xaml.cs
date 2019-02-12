@@ -32,16 +32,13 @@ namespace Database
             InitializeComponent();
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|Database.accdb");
 
-            //OleDbConnection cn; 
             string strConn = "Database.accdb";
             cn = new OleDbConnection(strConn);
-            //cn.ConnectionString = strConn;
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string query = "select* from Assets";
+            string query = "select* from Assets"; // Pulls from assets
             OleDbCommand cmd = new OleDbCommand(query, cn);
             cn.Open();
             OleDbDataReader read = cmd.ExecuteReader();
@@ -50,17 +47,17 @@ namespace Database
             while (read.Read())
             {
                 data += "EmployeeID: " + read[0] + "     "
-                     + "AssestID: " + read[1] + "     "
+                     + "Assest: " + read[1] + "     "
                      + "Description: " + read[2] + "\n";
             }
-
+            // Makes my Data show on Textbox
             TextBox1.Text = data;
             cn.Close();
         }
 
         private void Employees1_Click(object sender, RoutedEventArgs e)
         {
-            string query = "select* from Employees";
+            string query = "select* from Employees"; // Pulls employees rather than Assets
             OleDbCommand cmd = new OleDbCommand(query, cn);
             cn.Open();
             OleDbDataReader read = cmd.ExecuteReader();
@@ -68,6 +65,7 @@ namespace Database
 
             while (read.Read())
             {
+                // Data of my employees
                 data += "EmployeeID: " + read[0] + "     "
                      + "FirstName: " + read[1] + "     "
                      + "LastName: " + read[2] + "\n";
